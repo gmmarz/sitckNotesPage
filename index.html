@@ -33,7 +33,7 @@
           <!-- Modal -->
           <div class="modal fade" id="modal-nota" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <form class="modal-content">
+              <form class="modal-content" id="form-nota">
                 <!--Modal header-->
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar nota</h1>
@@ -59,7 +59,7 @@
                 <!--Modal footer-->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-success">Adicionar</button>
+                  <button type="submit" class="btn btn-success">Adicionar</button>
                 </div>
               </form>
             </div>
@@ -101,5 +101,7 @@
       <script
         nomodule
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      
+      <script src="./public/js/controller.js"></script>
   </body>
 </html>
