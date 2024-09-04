@@ -20,8 +20,12 @@ function Nota(nota){
     iconeExcluir.name = 'trash'
     botaoExcluirNota.appendChild(iconeExcluir)
 
-    const hrNota = document.createElement('hr')
+    //Criando evento para excluir nota
+    botaoExcluirNota.addEventListener(
+        "click", () => excluirNota(nota.id)
+    )
 
+    const hrNota = document.createElement('hr')
 
     //criando div header
     const divNotaHeader = document.createElement('div')
@@ -60,6 +64,7 @@ let notasState = [
 ];
 
 function criarId(notas){
+    
     let maiorId;
 
     for(let nota of notas){
@@ -73,18 +78,27 @@ function criarId(notas){
         return 1
     }
 
-    return maiorId++
+    maiorId = maiorId+1
+    
+    return maiorId
 }
 
 //listar notas
 function listarNotas(notas){
     const ulNotas = document.getElementById('notas')
+    
+    //Limpando lista de notas para mostrar notasStates 
+    ulNotas.textContent = ''
+
+    if(notas.lenght ==0){
+        ulNotas.textContent = 'Nenhuma nota foi encontrada'
+    }
 
     for(let nota of notas){
         const liNota = Nota(nota)
         ulNotas.appendChild(liNota)
     }
-
+   
 }
 
 function handleListarNotas(){
@@ -95,5 +109,45 @@ window.addEventListener('DOMContentLoaded',handleListarNotas)
 
 //Adicionar notas
 const formNotas = document.getElementById('form-nota')
+
+function handleAdcionarNota(event){
+    event.preventDefault();
+    
+
+    //Capturando resultado do formulário
+    let novaNota = {
+        id: criarId(notasState),
+        titulo: formNotas.notaTitulo.value,
+        descricao: formNotas.nota.value
+    };
+    console.log('nova nota')
+    console.log(novaNota)
+
+    notasState.push(novaNota)
+    listarNotas(notasState)
+    formNotas.reset()
+
+    let modal = document.getElementById('modal-nota');
+    modal = bootstrap.Modal.getInstance(modal)
+    modal.hide();
+}
+
+formNotas.addEventListener('submit',handleAdcionarNota)
+
+
+function excluirNota(notaId){
+    
+    //Criando alert para confirmar
+    let excluirConfirma = confirm('Deseja realmente excluir a nota?')
+
+    if (excluirConfirma){
+        notasState = notasState.filter((nota) => nota.id != notaId)
+
+        listarNotas(notasState)
+    }
+
+}
+
+
 
 
