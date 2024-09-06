@@ -33,7 +33,7 @@
           <!-- Modal -->
           <div class="modal fade" id="modal-nota" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <form class="modal-content">
+              <form class="modal-content" id="form-nota">
                 <!--Modal header-->
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar nota</h1>
@@ -46,20 +46,20 @@
                   <div class="mb-3">
                     <div class="input-group">
                       <span class="input-group-text" id="basic-addon3">Título</span>
-                      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                      <input type="text" class="form-control" id="notaTitulo" aria-describedby="basic-addon3 basic-addon4" required>
                     </div>
                   </div>
 
                   <!--Text area-->
                   <div class="input-group">
                     <span class="input-group-text">Digite sua nota:</span>
-                    <textarea class="form-control" aria-label="With textarea" id="nota"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" id="nota" required></textarea>
                   </div>
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-success">Adicionar</button>
+                  <button type="submit" class="btn btn-success">Adicionar</button>
                 </div>
               </form>
             </div>
@@ -70,6 +70,7 @@
 
         <h2>Notas adicionadas</h2>
         <ul id="notas">
+          <!-- Nota de exemplo
           <li class="nota">
             <div class="nota-header">
               <h3>Nota teste 1</h3>
@@ -82,6 +83,7 @@
               <p>Este local das minhas notas</p>
             </div>
           </li>
+          -->
         </ul>
         
 
@@ -101,5 +103,7 @@
       <script
         nomodule
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      
+      <script src="./public/js/controller.js"></script>
   </body>
 </html>
